@@ -1,0 +1,150 @@
+Determining the location of the ModelSim executable...
+
+Using: C:\intelFPGA_lite\16.1\modelsim_ase\win32aloem
+
+To specify a ModelSim executable directory, select: Tools -> Options -> EDA Tool Options
+Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-Altera will be used.
+
+**** Generating the ModelSim Testbench ****
+
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off uProcessor -c uProcessor --vector_source="D:/Documentos/microcontrolador/Waveform1.vwf" --testbench_file="D:/Documentos/microcontrolador/simulation/qsim/Waveform1.vwf.vht"
+
+Info: *******************************************************************
+Info: Running Quartus Prime EDA Netlist Writer
+    Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+    Info: Copyright (C) 2016  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Intel Program License 
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel MegaCore Function License Agreement, or other 
+    Info: applicable license agreement, including, without limitation, 
+    Info: that your use is for the sole purpose of programming logic 
+    Info: devices manufactured by Intel and sold by Intel or its 
+    Info: authorized distributors.  Please refer to the applicable 
+    Info: agreement for further details.
+    Info: Processing started: Thu Jun 15 11:22:37 2017
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off uProcessor -c uProcessor --vector_source=D:/Documentos/microcontrolador/Waveform1.vwf --testbench_file=D:/Documentos/microcontrolador/simulation/qsim/Waveform1.vwf.vht
+Info (119004): Automatically selected device EP4CE6E22C6 for design uProcessor
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+
+Completed successfully. 
+
+**** Generating the functional simulation netlist ****
+
+quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="D:/Documentos/microcontrolador/simulation/qsim/" uProcessor -c uProcessor
+
+Info: *******************************************************************
+Info: Running Quartus Prime EDA Netlist Writer
+    Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
+    Info: Copyright (C) 2016  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Intel Program License 
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel MegaCore Function License Agreement, or other 
+    Info: applicable license agreement, including, without limitation, 
+    Info: that your use is for the sole purpose of programming logic 
+    Info: devices manufactured by Intel and sold by Intel or its 
+    Info: authorized distributors.  Please refer to the applicable 
+    Info: agreement for further details.
+    Info: Processing started: Thu Jun 15 11:22:38 2017
+Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=D:/Documentos/microcontrolador/simulation/qsim/ uProcessor -c uProcessor
+Info (119004): Automatically selected device EP4CE6E22C6 for design uProcessor
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (204019): Generated file uProcessor.vho in folder "D:/Documentos/microcontrolador/simulation/qsim//" for EDA simulation tool
+Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 493 megabytes
+    Info: Processing ended: Thu Jun 15 11:22:39 2017
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:01
+
+Completed successfully. 
+
+**** Generating the ModelSim .do script ****
+
+D:/Documentos/microcontrolador/simulation/qsim/uProcessor.do generated.
+
+Completed successfully. 
+
+**** Running the ModelSim simulation ****
+
+C:/intelFPGA_lite/16.1/modelsim_ase/win32aloem/vsim -c -do uProcessor.do
+
+Reading C:/intelFPGA_lite/16.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+
+# do uProcessor.do
+# ** Warning: (vlib-34) Library already exists at "work".
+
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:22:39 on Jun 15,2017
+# vcom -work work uProcessor.vho 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package VITAL_Timing
+# -- Loading package VITAL_Primitives
+# -- Loading package cycloneive_atom_pack
+# -- Loading package cycloneive_components
+# -- Compiling entity subtractor7b
+# -- Compiling architecture structure of subtractor7b
+# End time: 11:22:39 on Jun 15,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:22:39 on Jun 15,2017
+# vcom -work work Waveform1.vwf.vht 
+
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity subtractor7b_vhd_vec_tst
+# -- Compiling architecture subtractor7b_arch of subtractor7b_vhd_vec_tst
+# End time: 11:22:40 on Jun 15,2017, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+
+# vsim -novopt -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.subtractor7b_vhd_vec_tst 
+# Start time: 11:22:40 on Jun 15,2017
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.subtractor7b_vhd_vec_tst(subtractor7b_arch)
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading cycloneive.cycloneive_atom_pack(body)
+# Loading cycloneive.cycloneive_components
+# Loading work.subtractor7b(structure)
+# Loading ieee.std_logic_arith(body)
+# Loading cycloneive.cycloneive_io_obuf(arch)
+# Loading cycloneive.cycloneive_io_ibuf(arch)
+# Loading cycloneive.cycloneive_lcell_comb(vital_lcell_comb)
+# after#31
+
+# End time: 11:22:40 on Jun 15,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+
+Completed successfully. 
+
+**** Converting ModelSim VCD to vector waveform ****
+
+Reading D:/Documentos/microcontrolador/Waveform1.vwf...
+
+Reading D:/Documentos/microcontrolador/simulation/qsim/uProcessor.msim.vcd...
+
+Processing channel transitions... 
+
+Writing the resulting VWF to D:/Documentos/microcontrolador/simulation/qsim/uProcessor_20170615112240.sim.vwf
+
+Finished VCD to VWF conversion.
+
+Completed successfully. 
+
+All completed.
