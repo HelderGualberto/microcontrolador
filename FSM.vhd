@@ -135,6 +135,8 @@ architecture behavior of FSM is
                                CONTROL_ULA <= "01"; -- OP AND
 									elsif(COMMAND = x"8") then
                                CONTROL_ULA <= "10"; -- OP SUB
+									elsif(COMMAND = x"9") then
+                               CONTROL_ULA <= "11"; -- OP MUL
                            end if;
                            
                               CONTROL_ACC <= '1';

@@ -1,0 +1,37 @@
+--multiplier 8bits
+--Just result above or equal 8 bits
+
+LIBRARY ieee;
+use ieee.std_logic_1164.all;
+
+
+ENTITY multiplier is
+	port(
+		A,B : in std_logic_vector(7 downto 0);
+		S : out std_logic_vector(7 downto 0);
+		OVF : out std_logic := '0'
+	);
+END;
+
+
+ARCHITECTURE behavior of multiplier is
+
+	SIGNAL count : std_logic_vector(7 downto 0);
+	SIGNAL SUM_OUT : std_logic_vector(7 downto 0);
+	
+	COMPONENT adder8b is
+		port 
+	   (
+			VALUE1    : in  std_logic_vector(7 downto 0);
+			VALUE2    : in  std_logic_vector(7 downto 0);
+			RESULT	 : out std_logic_vector(7 downto 0)
+			   
+		 ); 
+	END COMPONENT
+	
+	
+	begin
+	
+	
+
+END behavior;

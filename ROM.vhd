@@ -23,22 +23,22 @@ architecture behavior of ROM is
 	  -- * indica o conteudo do endereco XX
      signal MEMPROGRAM: vector_data_program := 
      (
-		0  => x"0002", -- LDA 02 --> AC <- *02
-		1  => x"0703", -- ADD 03 --> AC <- AC + *3  -- SUB 03 --> AC <- *3 - AC
-		2  => x"0506", -- BRN 06 --> Pula para *06 se AC > 0
-		3  => x"0100", -- STA 00 --> *00 <- AC
-		4  => x"0408", -- JMP 08 --> Pula para ROM 08
-		5  => x"0001", -- LDA 01 --> AC <- *01
-		6  => x"0000", -- NOP
-		7  => x"0000", -- NOP
-		8  => x"FF00", -- HALT
-		9  => x"0000", -- NOP
-		10 => x"0000", -- NOP
-		11 => x"0000", -- NOP
-		12 => x"0000", -- NOP
-		13 => x"0000", -- NOP
-		14 => x"0000", -- NOP
-		15 => x"0000"
+			0  => x"0002", -- LDA 02 --> AC <- *02
+			1  => x"0203", -- ADD 03 --> AC <- *3 + AC  
+			2  => x"010D", -- STA 0D --> *0D <- AC
+			3  => x"0002", -- LDA 02 --> AC <- *02
+			4  => x"0703", -- SUB 03 --> AC <- *3 - AC  
+			5  => x"010E", -- STA 0E --> *0D <- AC
+			6  => x"0002", -- LDA 02 --> AC <- *02
+			7  => x"0803", -- MUL 03 --> AC <- *3 * AC  
+			8  => x"010F", -- STA 0F --> *0D <- AC
+			9  => x"FF00", -- HALT
+			10 => x"0000", -- NOP
+			11 => x"0000", -- NOP
+			12 => x"0000", -- NOP
+			13 => x"0000", -- NOP
+			14 => x"0000", -- NOP
+			15 => x"0000"
 		);
 		
 		signal DATA_signal: std_logic_vector(15 downto 0);

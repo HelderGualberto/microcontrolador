@@ -22,8 +22,8 @@ end ULA;
 
 architecture behavior of ULA is
     
-signal SUM_AUX, CARRY_AUX: std_logic_vector(7 downto 0);
-signal SUB_AUX : std_logic_vector(7 downto 0);
+signal SUM_AUX, CARRY_AUX, SUB_AUX, MUL_AUX: std_logic_vector(7 downto 0);
+
 
 component FA 
 	port 
@@ -43,6 +43,13 @@ component subtractor7b
 		 ); 
 end component;
 
+component multiplier
+	port(
+		A,B : in std_logic_vector(7 downto 0); -- ENTRADAS -> 8 bits
+		S : out std_logic_vector(7 downto 0)   -- SAIDA -> 8 bits - para multiplicacoes com valor resultante de 8 bits ou menos
+	);
+end component;
+
 begin
 
    FA1: FA port map (VALUE2(0), VALUE1(0), '0'     , SUM_AUX(0), CARRY_AUX(0));
@@ -57,6 +64,8 @@ begin
 
 	--Fra a subtracao Value1 - Value2
 	sub : subtractor7b port map (VALUE2,VALUE1,SUB_AUX);
+	
+	mul : multiplier port map (VALUE2, VALUE1, MUL_AUX);
         
         process (CONTROL, VALUE1, VALUE2)  
            begin
@@ -69,6 +78,9 @@ begin
 					     elsif(CONTROL = "10") then --operacao subtracao
 								RESULT <= SUB_AUX;
 								FLAG_NEG <= SUB_AUX(7);
+						  elsif(CONTROL = "11") then -- operacao multiplicacao unsigned
+								RESULT <= MUL_AUX;
+								FLAG_NEG <= '0';
                    end if;
         end process;
         

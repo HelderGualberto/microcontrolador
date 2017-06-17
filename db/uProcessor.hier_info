@@ -1,133 +1,27 @@
-|subtractor7b
-A[0] => halfSubtractor:hs.A
-A[1] => fullSubtractor:fs0.A
-A[2] => fullSubtractor:fs1.A
-A[3] => fullSubtractor:fs2.A
-A[4] => fullSubtractor:fs3.A
-A[5] => fullSubtractor:fs4.A
-A[6] => fullSubtractor:fs5.A
-B[0] => halfSubtractor:hs.B
-B[1] => fullSubtractor:fs0.B
-B[2] => fullSubtractor:fs1.B
-B[3] => fullSubtractor:fs2.B
-B[4] => fullSubtractor:fs3.B
-B[5] => fullSubtractor:fs4.B
-B[6] => fullSubtractor:fs5.B
-S[0] << halfSubtractor:hs.S
-S[1] << fullSubtractor:fs0.S
-S[2] << fullSubtractor:fs1.S
-S[3] << fullSubtractor:fs2.S
-S[4] << fullSubtractor:fs3.S
-S[5] << fullSubtractor:fs4.S
-S[6] << fullSubtractor:fs5.S
-S[7] << fullSubtractor:fs5.Te
-EN => halfSubtractor:hs.EN
-EN => fullSubtractor:fs0.EN
-EN => fullSubtractor:fs1.EN
-EN => fullSubtractor:fs2.EN
-EN => fullSubtractor:fs3.EN
-EN => fullSubtractor:fs4.EN
-EN => fullSubtractor:fs5.EN
-
-
-|subtractor7b|halfSubtractor:hs
-A => S.IN0
-A => Te.IN0
-B => S.IN1
-B => Te.IN1
-EN => Te$latch.LATCH_ENABLE
-EN => S$latch.LATCH_ENABLE
-S <= S$latch.DB_MAX_OUTPUT_PORT_TYPE
-Te <= Te$latch.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|subtractor7b|fullSubtractor:fs0
-A => S.IN1
-A => S.IN1
-B => S.IN0
-B => S.IN0
-B => Te.IN0
-Ta => S.IN1
-Ta => S.IN1
-Ta => Te.IN1
-EN => Te$latch.LATCH_ENABLE
-EN => S$latch.LATCH_ENABLE
-S <= S$latch.DB_MAX_OUTPUT_PORT_TYPE
-Te <= Te$latch.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|subtractor7b|fullSubtractor:fs1
-A => S.IN1
-A => S.IN1
-B => S.IN0
-B => S.IN0
-B => Te.IN0
-Ta => S.IN1
-Ta => S.IN1
-Ta => Te.IN1
-EN => Te$latch.LATCH_ENABLE
-EN => S$latch.LATCH_ENABLE
-S <= S$latch.DB_MAX_OUTPUT_PORT_TYPE
-Te <= Te$latch.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|subtractor7b|fullSubtractor:fs2
-A => S.IN1
-A => S.IN1
-B => S.IN0
-B => S.IN0
-B => Te.IN0
-Ta => S.IN1
-Ta => S.IN1
-Ta => Te.IN1
-EN => Te$latch.LATCH_ENABLE
-EN => S$latch.LATCH_ENABLE
-S <= S$latch.DB_MAX_OUTPUT_PORT_TYPE
-Te <= Te$latch.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|subtractor7b|fullSubtractor:fs3
-A => S.IN1
-A => S.IN1
-B => S.IN0
-B => S.IN0
-B => Te.IN0
-Ta => S.IN1
-Ta => S.IN1
-Ta => Te.IN1
-EN => Te$latch.LATCH_ENABLE
-EN => S$latch.LATCH_ENABLE
-S <= S$latch.DB_MAX_OUTPUT_PORT_TYPE
-Te <= Te$latch.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|subtractor7b|fullSubtractor:fs4
-A => S.IN1
-A => S.IN1
-B => S.IN0
-B => S.IN0
-B => Te.IN0
-Ta => S.IN1
-Ta => S.IN1
-Ta => Te.IN1
-EN => Te$latch.LATCH_ENABLE
-EN => S$latch.LATCH_ENABLE
-S <= S$latch.DB_MAX_OUTPUT_PORT_TYPE
-Te <= Te$latch.DB_MAX_OUTPUT_PORT_TYPE
-
-
-|subtractor7b|fullSubtractor:fs5
-A => S.IN1
-A => S.IN1
-B => S.IN0
-B => S.IN0
-B => Te.IN0
-Ta => S.IN1
-Ta => S.IN1
-Ta => Te.IN1
-EN => Te$latch.LATCH_ENABLE
-EN => S$latch.LATCH_ENABLE
-S <= S$latch.DB_MAX_OUTPUT_PORT_TYPE
-Te <= Te$latch.DB_MAX_OUTPUT_PORT_TYPE
+|multiplier
+A[0] => Mult0.IN7
+A[1] => Mult0.IN6
+A[2] => Mult0.IN5
+A[3] => Mult0.IN4
+A[4] => Mult0.IN3
+A[5] => Mult0.IN2
+A[6] => Mult0.IN1
+A[7] => Mult0.IN0
+B[0] => Mult0.IN15
+B[1] => Mult0.IN14
+B[2] => Mult0.IN13
+B[3] => Mult0.IN12
+B[4] => Mult0.IN11
+B[5] => Mult0.IN10
+B[6] => Mult0.IN9
+B[7] => Mult0.IN8
+S[0] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
+S[1] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
+S[2] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
+S[3] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
+S[4] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
+S[5] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
+S[6] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
+S[7] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 
 

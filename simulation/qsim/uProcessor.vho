@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition"
 
--- DATE "06/15/2017 11:22:39"
+-- DATE "06/17/2017 12:19:45"
 
 -- 
 -- Device: Altera EP4CE6E22C6 Package TQFP144
@@ -32,16 +32,15 @@ LIBRARY IEEE;
 USE CYCLONEIVE.CYCLONEIVE_COMPONENTS.ALL;
 USE IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY 	subtractor7b IS
+ENTITY 	multiplier IS
     PORT (
-	A : IN std_logic_vector(6 DOWNTO 0);
-	B : IN std_logic_vector(6 DOWNTO 0);
-	S : BUFFER std_logic_vector(7 DOWNTO 0);
-	EN : IN std_logic
+	A : IN std_logic_vector(7 DOWNTO 0);
+	B : IN std_logic_vector(7 DOWNTO 0);
+	S : OUT std_logic_vector(7 DOWNTO 0)
 	);
-END subtractor7b;
+END multiplier;
 
-ARCHITECTURE structure OF subtractor7b IS
+ARCHITECTURE structure OF multiplier IS
 SIGNAL gnd : std_logic := '0';
 SIGNAL vcc : std_logic := '1';
 SIGNAL unknown : std_logic := 'X';
@@ -51,10 +50,22 @@ SIGNAL devpor : std_logic := '1';
 SIGNAL ww_devoe : std_logic;
 SIGNAL ww_devclrn : std_logic;
 SIGNAL ww_devpor : std_logic;
-SIGNAL ww_A : std_logic_vector(6 DOWNTO 0);
-SIGNAL ww_B : std_logic_vector(6 DOWNTO 0);
+SIGNAL ww_A : std_logic_vector(7 DOWNTO 0);
+SIGNAL ww_B : std_logic_vector(7 DOWNTO 0);
 SIGNAL ww_S : std_logic_vector(7 DOWNTO 0);
-SIGNAL ww_EN : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2_DATAA_bus\ : std_logic_vector(15 DOWNTO 0);
+SIGNAL \Mult0|auto_generated|mac_out2_DATAOUT_bus\ : std_logic_vector(15 DOWNTO 0);
+SIGNAL \Mult0|auto_generated|mac_mult1_DATAA_bus\ : std_logic_vector(7 DOWNTO 0);
+SIGNAL \Mult0|auto_generated|mac_mult1_DATAB_bus\ : std_logic_vector(7 DOWNTO 0);
+SIGNAL \Mult0|auto_generated|mac_mult1_DATAOUT_bus\ : std_logic_vector(15 DOWNTO 0);
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT8\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT9\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT10\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT11\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT12\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT13\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT14\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT15\ : std_logic;
 SIGNAL \S[0]~output_o\ : std_logic;
 SIGNAL \S[1]~output_o\ : std_logic;
 SIGNAL \S[2]~output_o\ : std_logic;
@@ -64,58 +75,97 @@ SIGNAL \S[5]~output_o\ : std_logic;
 SIGNAL \S[6]~output_o\ : std_logic;
 SIGNAL \S[7]~output_o\ : std_logic;
 SIGNAL \A[0]~input_o\ : std_logic;
-SIGNAL \B[0]~input_o\ : std_logic;
-SIGNAL \hs|S~0_combout\ : std_logic;
-SIGNAL \EN~input_o\ : std_logic;
-SIGNAL \hs|S~combout\ : std_logic;
 SIGNAL \A[1]~input_o\ : std_logic;
-SIGNAL \B[1]~input_o\ : std_logic;
-SIGNAL \hs|Te~0_combout\ : std_logic;
-SIGNAL \hs|Te~combout\ : std_logic;
-SIGNAL \fs0|S~0_combout\ : std_logic;
-SIGNAL \fs0|S~combout\ : std_logic;
 SIGNAL \A[2]~input_o\ : std_logic;
-SIGNAL \B[2]~input_o\ : std_logic;
-SIGNAL \fs0|Te~0_combout\ : std_logic;
-SIGNAL \fs0|Te~combout\ : std_logic;
-SIGNAL \fs1|S~0_combout\ : std_logic;
-SIGNAL \fs1|S~combout\ : std_logic;
 SIGNAL \A[3]~input_o\ : std_logic;
-SIGNAL \B[3]~input_o\ : std_logic;
-SIGNAL \fs1|Te~0_combout\ : std_logic;
-SIGNAL \fs1|Te~combout\ : std_logic;
-SIGNAL \fs2|S~0_combout\ : std_logic;
-SIGNAL \fs2|S~combout\ : std_logic;
 SIGNAL \A[4]~input_o\ : std_logic;
-SIGNAL \B[4]~input_o\ : std_logic;
-SIGNAL \fs2|Te~0_combout\ : std_logic;
-SIGNAL \fs2|Te~combout\ : std_logic;
-SIGNAL \fs3|S~0_combout\ : std_logic;
-SIGNAL \fs3|S~combout\ : std_logic;
 SIGNAL \A[5]~input_o\ : std_logic;
-SIGNAL \B[5]~input_o\ : std_logic;
-SIGNAL \fs3|Te~0_combout\ : std_logic;
-SIGNAL \fs3|Te~combout\ : std_logic;
-SIGNAL \fs4|S~0_combout\ : std_logic;
-SIGNAL \fs4|S~combout\ : std_logic;
 SIGNAL \A[6]~input_o\ : std_logic;
+SIGNAL \A[7]~input_o\ : std_logic;
+SIGNAL \B[0]~input_o\ : std_logic;
+SIGNAL \B[1]~input_o\ : std_logic;
+SIGNAL \B[2]~input_o\ : std_logic;
+SIGNAL \B[3]~input_o\ : std_logic;
+SIGNAL \B[4]~input_o\ : std_logic;
+SIGNAL \B[5]~input_o\ : std_logic;
 SIGNAL \B[6]~input_o\ : std_logic;
-SIGNAL \fs4|Te~0_combout\ : std_logic;
-SIGNAL \fs4|Te~combout\ : std_logic;
-SIGNAL \fs5|S~0_combout\ : std_logic;
-SIGNAL \fs5|S~combout\ : std_logic;
-SIGNAL \fs5|Te~0_combout\ : std_logic;
-SIGNAL \fs5|Te~combout\ : std_logic;
+SIGNAL \B[7]~input_o\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~dataout\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT1\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT2\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT3\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT4\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT5\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT6\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT7\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT8\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT9\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT10\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT11\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT12\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT13\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT14\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_mult1~DATAOUT15\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~dataout\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT1\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT2\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT3\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT4\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT5\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT6\ : std_logic;
+SIGNAL \Mult0|auto_generated|mac_out2~DATAOUT7\ : std_logic;
 
 BEGIN
 
 ww_A <= A;
 ww_B <= B;
 S <= ww_S;
-ww_EN <= EN;
 ww_devoe <= devoe;
 ww_devclrn <= devclrn;
 ww_devpor <= devpor;
+
+\Mult0|auto_generated|mac_out2_DATAA_bus\ <= (\Mult0|auto_generated|mac_mult1~DATAOUT15\ & \Mult0|auto_generated|mac_mult1~DATAOUT14\ & \Mult0|auto_generated|mac_mult1~DATAOUT13\ & \Mult0|auto_generated|mac_mult1~DATAOUT12\ & 
+\Mult0|auto_generated|mac_mult1~DATAOUT11\ & \Mult0|auto_generated|mac_mult1~DATAOUT10\ & \Mult0|auto_generated|mac_mult1~DATAOUT9\ & \Mult0|auto_generated|mac_mult1~DATAOUT8\ & \Mult0|auto_generated|mac_mult1~DATAOUT7\ & 
+\Mult0|auto_generated|mac_mult1~DATAOUT6\ & \Mult0|auto_generated|mac_mult1~DATAOUT5\ & \Mult0|auto_generated|mac_mult1~DATAOUT4\ & \Mult0|auto_generated|mac_mult1~DATAOUT3\ & \Mult0|auto_generated|mac_mult1~DATAOUT2\ & 
+\Mult0|auto_generated|mac_mult1~DATAOUT1\ & \Mult0|auto_generated|mac_mult1~dataout\);
+
+\Mult0|auto_generated|mac_out2~dataout\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(0);
+\Mult0|auto_generated|mac_out2~DATAOUT1\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(1);
+\Mult0|auto_generated|mac_out2~DATAOUT2\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(2);
+\Mult0|auto_generated|mac_out2~DATAOUT3\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(3);
+\Mult0|auto_generated|mac_out2~DATAOUT4\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(4);
+\Mult0|auto_generated|mac_out2~DATAOUT5\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(5);
+\Mult0|auto_generated|mac_out2~DATAOUT6\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(6);
+\Mult0|auto_generated|mac_out2~DATAOUT7\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(7);
+\Mult0|auto_generated|mac_out2~DATAOUT8\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(8);
+\Mult0|auto_generated|mac_out2~DATAOUT9\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(9);
+\Mult0|auto_generated|mac_out2~DATAOUT10\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(10);
+\Mult0|auto_generated|mac_out2~DATAOUT11\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(11);
+\Mult0|auto_generated|mac_out2~DATAOUT12\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(12);
+\Mult0|auto_generated|mac_out2~DATAOUT13\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(13);
+\Mult0|auto_generated|mac_out2~DATAOUT14\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(14);
+\Mult0|auto_generated|mac_out2~DATAOUT15\ <= \Mult0|auto_generated|mac_out2_DATAOUT_bus\(15);
+
+\Mult0|auto_generated|mac_mult1_DATAA_bus\ <= (\A[7]~input_o\ & \A[6]~input_o\ & \A[5]~input_o\ & \A[4]~input_o\ & \A[3]~input_o\ & \A[2]~input_o\ & \A[1]~input_o\ & \A[0]~input_o\);
+
+\Mult0|auto_generated|mac_mult1_DATAB_bus\ <= (\B[7]~input_o\ & \B[6]~input_o\ & \B[5]~input_o\ & \B[4]~input_o\ & \B[3]~input_o\ & \B[2]~input_o\ & \B[1]~input_o\ & \B[0]~input_o\);
+
+\Mult0|auto_generated|mac_mult1~dataout\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(0);
+\Mult0|auto_generated|mac_mult1~DATAOUT1\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(1);
+\Mult0|auto_generated|mac_mult1~DATAOUT2\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(2);
+\Mult0|auto_generated|mac_mult1~DATAOUT3\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(3);
+\Mult0|auto_generated|mac_mult1~DATAOUT4\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(4);
+\Mult0|auto_generated|mac_mult1~DATAOUT5\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(5);
+\Mult0|auto_generated|mac_mult1~DATAOUT6\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(6);
+\Mult0|auto_generated|mac_mult1~DATAOUT7\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(7);
+\Mult0|auto_generated|mac_mult1~DATAOUT8\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(8);
+\Mult0|auto_generated|mac_mult1~DATAOUT9\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(9);
+\Mult0|auto_generated|mac_mult1~DATAOUT10\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(10);
+\Mult0|auto_generated|mac_mult1~DATAOUT11\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(11);
+\Mult0|auto_generated|mac_mult1~DATAOUT12\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(12);
+\Mult0|auto_generated|mac_mult1~DATAOUT13\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(13);
+\Mult0|auto_generated|mac_mult1~DATAOUT14\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(14);
+\Mult0|auto_generated|mac_mult1~DATAOUT15\ <= \Mult0|auto_generated|mac_mult1_DATAOUT_bus\(15);
 
 \S[0]~output\ : cycloneive_io_obuf
 -- pragma translate_off
@@ -124,7 +174,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \hs|S~combout\,
+	i => \Mult0|auto_generated|mac_out2~dataout\,
 	devoe => ww_devoe,
 	o => \S[0]~output_o\);
 
@@ -135,7 +185,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \fs0|S~combout\,
+	i => \Mult0|auto_generated|mac_out2~DATAOUT1\,
 	devoe => ww_devoe,
 	o => \S[1]~output_o\);
 
@@ -146,7 +196,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \fs1|S~combout\,
+	i => \Mult0|auto_generated|mac_out2~DATAOUT2\,
 	devoe => ww_devoe,
 	o => \S[2]~output_o\);
 
@@ -157,7 +207,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \fs2|S~combout\,
+	i => \Mult0|auto_generated|mac_out2~DATAOUT3\,
 	devoe => ww_devoe,
 	o => \S[3]~output_o\);
 
@@ -168,7 +218,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \fs3|S~combout\,
+	i => \Mult0|auto_generated|mac_out2~DATAOUT4\,
 	devoe => ww_devoe,
 	o => \S[4]~output_o\);
 
@@ -179,7 +229,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \fs4|S~combout\,
+	i => \Mult0|auto_generated|mac_out2~DATAOUT5\,
 	devoe => ww_devoe,
 	o => \S[5]~output_o\);
 
@@ -190,7 +240,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \fs5|S~combout\,
+	i => \Mult0|auto_generated|mac_out2~DATAOUT6\,
 	devoe => ww_devoe,
 	o => \S[6]~output_o\);
 
@@ -201,7 +251,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \fs5|Te~combout\,
+	i => \Mult0|auto_generated|mac_out2~DATAOUT7\,
 	devoe => ww_devoe,
 	o => \S[7]~output_o\);
 
@@ -215,55 +265,6 @@ PORT MAP (
 	i => ww_A(0),
 	o => \A[0]~input_o\);
 
-\B[0]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_B(0),
-	o => \B[0]~input_o\);
-
-\hs|S~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \hs|S~0_combout\ = \A[0]~input_o\ $ (\B[0]~input_o\)
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000111111110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datac => \A[0]~input_o\,
-	datad => \B[0]~input_o\,
-	combout => \hs|S~0_combout\);
-
-\EN~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_EN,
-	o => \EN~input_o\);
-
-\hs|S\ : cycloneive_lcell_comb
--- Equation(s):
--- \hs|S~combout\ = (\EN~input_o\ & (\hs|S~0_combout\)) # (!\EN~input_o\ & ((\hs|S~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \hs|S~0_combout\,
-	datac => \hs|S~combout\,
-	datad => \EN~input_o\,
-	combout => \hs|S~combout\);
-
 \A[1]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
@@ -273,75 +274,6 @@ GENERIC MAP (
 PORT MAP (
 	i => ww_A(1),
 	o => \A[1]~input_o\);
-
-\B[1]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_B(1),
-	o => \B[1]~input_o\);
-
-\hs|Te~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \hs|Te~0_combout\ = (\B[0]~input_o\ & !\A[0]~input_o\)
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000000010101010",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \B[0]~input_o\,
-	datad => \A[0]~input_o\,
-	combout => \hs|Te~0_combout\);
-
-\hs|Te\ : cycloneive_lcell_comb
--- Equation(s):
--- \hs|Te~combout\ = (\EN~input_o\ & (\hs|Te~0_combout\)) # (!\EN~input_o\ & ((\hs|Te~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \hs|Te~0_combout\,
-	datac => \hs|Te~combout\,
-	datad => \EN~input_o\,
-	combout => \hs|Te~combout\);
-
-\fs0|S~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs0|S~0_combout\ = \A[1]~input_o\ $ (\B[1]~input_o\ $ (\hs|Te~combout\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1001011010010110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \A[1]~input_o\,
-	datab => \B[1]~input_o\,
-	datac => \hs|Te~combout\,
-	combout => \fs0|S~0_combout\);
-
-\fs0|S\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs0|S~combout\ = (\EN~input_o\ & (\fs0|S~0_combout\)) # (!\EN~input_o\ & ((\fs0|S~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \fs0|S~0_combout\,
-	datac => \fs0|S~combout\,
-	datad => \EN~input_o\,
-	combout => \fs0|S~combout\);
 
 \A[2]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
@@ -353,76 +285,6 @@ PORT MAP (
 	i => ww_A(2),
 	o => \A[2]~input_o\);
 
-\B[2]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_B(2),
-	o => \B[2]~input_o\);
-
-\fs0|Te~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs0|Te~0_combout\ = (\B[1]~input_o\ & ((\hs|Te~combout\) # (!\A[1]~input_o\))) # (!\B[1]~input_o\ & (\hs|Te~combout\ & !\A[1]~input_o\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1000100011101110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \B[1]~input_o\,
-	datab => \hs|Te~combout\,
-	datad => \A[1]~input_o\,
-	combout => \fs0|Te~0_combout\);
-
-\fs0|Te\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs0|Te~combout\ = (\EN~input_o\ & (\fs0|Te~0_combout\)) # (!\EN~input_o\ & ((\fs0|Te~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \fs0|Te~0_combout\,
-	datac => \fs0|Te~combout\,
-	datad => \EN~input_o\,
-	combout => \fs0|Te~combout\);
-
-\fs1|S~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs1|S~0_combout\ = \A[2]~input_o\ $ (\B[2]~input_o\ $ (\fs0|Te~combout\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1001011010010110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \A[2]~input_o\,
-	datab => \B[2]~input_o\,
-	datac => \fs0|Te~combout\,
-	combout => \fs1|S~0_combout\);
-
-\fs1|S\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs1|S~combout\ = (\EN~input_o\ & (\fs1|S~0_combout\)) # (!\EN~input_o\ & ((\fs1|S~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \fs1|S~0_combout\,
-	datac => \fs1|S~combout\,
-	datad => \EN~input_o\,
-	combout => \fs1|S~combout\);
-
 \A[3]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
@@ -432,76 +294,6 @@ GENERIC MAP (
 PORT MAP (
 	i => ww_A(3),
 	o => \A[3]~input_o\);
-
-\B[3]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_B(3),
-	o => \B[3]~input_o\);
-
-\fs1|Te~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs1|Te~0_combout\ = (\B[2]~input_o\ & ((\fs0|Te~combout\) # (!\A[2]~input_o\))) # (!\B[2]~input_o\ & (\fs0|Te~combout\ & !\A[2]~input_o\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1000100011101110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \B[2]~input_o\,
-	datab => \fs0|Te~combout\,
-	datad => \A[2]~input_o\,
-	combout => \fs1|Te~0_combout\);
-
-\fs1|Te\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs1|Te~combout\ = (\EN~input_o\ & (\fs1|Te~0_combout\)) # (!\EN~input_o\ & ((\fs1|Te~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \fs1|Te~0_combout\,
-	datac => \fs1|Te~combout\,
-	datad => \EN~input_o\,
-	combout => \fs1|Te~combout\);
-
-\fs2|S~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs2|S~0_combout\ = \A[3]~input_o\ $ (\B[3]~input_o\ $ (\fs1|Te~combout\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1001011010010110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \A[3]~input_o\,
-	datab => \B[3]~input_o\,
-	datac => \fs1|Te~combout\,
-	combout => \fs2|S~0_combout\);
-
-\fs2|S\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs2|S~combout\ = (\EN~input_o\ & (\fs2|S~0_combout\)) # (!\EN~input_o\ & ((\fs2|S~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \fs2|S~0_combout\,
-	datac => \fs2|S~combout\,
-	datad => \EN~input_o\,
-	combout => \fs2|S~combout\);
 
 \A[4]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
@@ -513,76 +305,6 @@ PORT MAP (
 	i => ww_A(4),
 	o => \A[4]~input_o\);
 
-\B[4]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_B(4),
-	o => \B[4]~input_o\);
-
-\fs2|Te~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs2|Te~0_combout\ = (\B[3]~input_o\ & ((\fs1|Te~combout\) # (!\A[3]~input_o\))) # (!\B[3]~input_o\ & (\fs1|Te~combout\ & !\A[3]~input_o\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1000100011101110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \B[3]~input_o\,
-	datab => \fs1|Te~combout\,
-	datad => \A[3]~input_o\,
-	combout => \fs2|Te~0_combout\);
-
-\fs2|Te\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs2|Te~combout\ = (\EN~input_o\ & (\fs2|Te~0_combout\)) # (!\EN~input_o\ & ((\fs2|Te~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \fs2|Te~0_combout\,
-	datac => \fs2|Te~combout\,
-	datad => \EN~input_o\,
-	combout => \fs2|Te~combout\);
-
-\fs3|S~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs3|S~0_combout\ = \A[4]~input_o\ $ (\B[4]~input_o\ $ (\fs2|Te~combout\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1001011010010110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \A[4]~input_o\,
-	datab => \B[4]~input_o\,
-	datac => \fs2|Te~combout\,
-	combout => \fs3|S~0_combout\);
-
-\fs3|S\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs3|S~combout\ = (\EN~input_o\ & (\fs3|S~0_combout\)) # (!\EN~input_o\ & ((\fs3|S~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \fs3|S~0_combout\,
-	datac => \fs3|S~combout\,
-	datad => \EN~input_o\,
-	combout => \fs3|S~combout\);
-
 \A[5]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
@@ -592,76 +314,6 @@ GENERIC MAP (
 PORT MAP (
 	i => ww_A(5),
 	o => \A[5]~input_o\);
-
-\B[5]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_B(5),
-	o => \B[5]~input_o\);
-
-\fs3|Te~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs3|Te~0_combout\ = (\B[4]~input_o\ & ((\fs2|Te~combout\) # (!\A[4]~input_o\))) # (!\B[4]~input_o\ & (\fs2|Te~combout\ & !\A[4]~input_o\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1000100011101110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \B[4]~input_o\,
-	datab => \fs2|Te~combout\,
-	datad => \A[4]~input_o\,
-	combout => \fs3|Te~0_combout\);
-
-\fs3|Te\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs3|Te~combout\ = (\EN~input_o\ & (\fs3|Te~0_combout\)) # (!\EN~input_o\ & ((\fs3|Te~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \fs3|Te~0_combout\,
-	datac => \fs3|Te~combout\,
-	datad => \EN~input_o\,
-	combout => \fs3|Te~combout\);
-
-\fs4|S~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs4|S~0_combout\ = \A[5]~input_o\ $ (\B[5]~input_o\ $ (\fs3|Te~combout\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1001011010010110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \A[5]~input_o\,
-	datab => \B[5]~input_o\,
-	datac => \fs3|Te~combout\,
-	combout => \fs4|S~0_combout\);
-
-\fs4|S\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs4|S~combout\ = (\EN~input_o\ & (\fs4|S~0_combout\)) # (!\EN~input_o\ & ((\fs4|S~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \fs4|S~0_combout\,
-	datac => \fs4|S~combout\,
-	datad => \EN~input_o\,
-	combout => \fs4|S~combout\);
 
 \A[6]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
@@ -673,6 +325,76 @@ PORT MAP (
 	i => ww_A(6),
 	o => \A[6]~input_o\);
 
+\A[7]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_A(7),
+	o => \A[7]~input_o\);
+
+\B[0]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_B(0),
+	o => \B[0]~input_o\);
+
+\B[1]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_B(1),
+	o => \B[1]~input_o\);
+
+\B[2]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_B(2),
+	o => \B[2]~input_o\);
+
+\B[3]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_B(3),
+	o => \B[3]~input_o\);
+
+\B[4]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_B(4),
+	o => \B[4]~input_o\);
+
+\B[5]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_B(5),
+	o => \B[5]~input_o\);
+
 \B[6]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
@@ -683,95 +405,46 @@ PORT MAP (
 	i => ww_B(6),
 	o => \B[6]~input_o\);
 
-\fs4|Te~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs4|Te~0_combout\ = (\B[5]~input_o\ & ((\fs3|Te~combout\) # (!\A[5]~input_o\))) # (!\B[5]~input_o\ & (\fs3|Te~combout\ & !\A[5]~input_o\))
-
+\B[7]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1000100011101110",
-	sum_lutc_input => "datac")
+	bus_hold => "false",
+	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	dataa => \B[5]~input_o\,
-	datab => \fs3|Te~combout\,
-	datad => \A[5]~input_o\,
-	combout => \fs4|Te~0_combout\);
+	i => ww_B(7),
+	o => \B[7]~input_o\);
 
-\fs4|Te\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs4|Te~combout\ = (\EN~input_o\ & (\fs4|Te~0_combout\)) # (!\EN~input_o\ & ((\fs4|Te~combout\)))
-
+\Mult0|auto_generated|mac_mult1\ : cycloneive_mac_mult
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
+	dataa_clock => "none",
+	dataa_width => 8,
+	datab_clock => "none",
+	datab_width => 8,
+	signa_clock => "none",
+	signb_clock => "none")
 -- pragma translate_on
 PORT MAP (
-	datab => \fs4|Te~0_combout\,
-	datac => \fs4|Te~combout\,
-	datad => \EN~input_o\,
-	combout => \fs4|Te~combout\);
+	signa => GND,
+	signb => GND,
+	dataa => \Mult0|auto_generated|mac_mult1_DATAA_bus\,
+	datab => \Mult0|auto_generated|mac_mult1_DATAB_bus\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	dataout => \Mult0|auto_generated|mac_mult1_DATAOUT_bus\);
 
-\fs5|S~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs5|S~0_combout\ = \A[6]~input_o\ $ (\B[6]~input_o\ $ (\fs4|Te~combout\))
-
+\Mult0|auto_generated|mac_out2\ : cycloneive_mac_out
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1001011010010110",
-	sum_lutc_input => "datac")
+	dataa_width => 16,
+	output_clock => "none")
 -- pragma translate_on
 PORT MAP (
-	dataa => \A[6]~input_o\,
-	datab => \B[6]~input_o\,
-	datac => \fs4|Te~combout\,
-	combout => \fs5|S~0_combout\);
-
-\fs5|S\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs5|S~combout\ = (\EN~input_o\ & (\fs5|S~0_combout\)) # (!\EN~input_o\ & ((\fs5|S~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \fs5|S~0_combout\,
-	datac => \fs5|S~combout\,
-	datad => \EN~input_o\,
-	combout => \fs5|S~combout\);
-
-\fs5|Te~0\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs5|Te~0_combout\ = (\B[6]~input_o\ & ((\fs4|Te~combout\) # (!\A[6]~input_o\))) # (!\B[6]~input_o\ & (\fs4|Te~combout\ & !\A[6]~input_o\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1000100011101110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \B[6]~input_o\,
-	datab => \fs4|Te~combout\,
-	datad => \A[6]~input_o\,
-	combout => \fs5|Te~0_combout\);
-
-\fs5|Te\ : cycloneive_lcell_comb
--- Equation(s):
--- \fs5|Te~combout\ = (\EN~input_o\ & (\fs5|Te~0_combout\)) # (!\EN~input_o\ & ((\fs5|Te~combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100110011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \fs5|Te~0_combout\,
-	datac => \fs5|Te~combout\,
-	datad => \EN~input_o\,
-	combout => \fs5|Te~combout\);
+	dataa => \Mult0|auto_generated|mac_out2_DATAA_bus\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	dataout => \Mult0|auto_generated|mac_out2_DATAOUT_bus\);
 
 ww_S(0) <= \S[0]~output_o\;
 

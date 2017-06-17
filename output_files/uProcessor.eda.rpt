@@ -1,5 +1,5 @@
 EDA Netlist Writer report for uProcessor
-Thu Jun 15 11:22:39 2017
+Sat Jun 17 12:19:45 2017
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -37,9 +37,9 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu Jun 15 11:22:39 2017 ;
+; EDA Netlist Writer Status ; Successful - Sat Jun 17 12:19:45 2017 ;
 ; Revision Name             ; uProcessor                            ;
-; Top-level Entity Name     ; subtractor7b                          ;
+; Top-level Entity Name     ; multiplier                            ;
 ; Family                    ; Cyclone IV E                          ;
 ; Simulation Files Creation ; Successful                            ;
 +---------------------------+---------------------------------------+
@@ -95,14 +95,14 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: devices manufactured by Intel and sold by Intel or its 
     Info: authorized distributors.  Please refer to the applicable 
     Info: agreement for further details.
-    Info: Processing started: Thu Jun 15 11:22:38 2017
+    Info: Processing started: Sat Jun 17 12:19:44 2017
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory=D:/Documentos/microcontrolador/simulation/qsim/ uProcessor -c uProcessor
 Info (119004): Automatically selected device EP4CE6E22C6 for design uProcessor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file uProcessor.vho in folder "D:/Documentos/microcontrolador/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 493 megabytes
-    Info: Processing ended: Thu Jun 15 11:22:39 2017
+    Info: Peak virtual memory: 491 megabytes
+    Info: Processing ended: Sat Jun 17 12:19:45 2017
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
